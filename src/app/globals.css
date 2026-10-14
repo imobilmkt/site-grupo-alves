@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #16213a;
+
+  --color-navy-950: #0a1222;
+  --color-navy-900: #0e1a30;
+  --color-navy-800: #142547;
+  --color-navy-700: #1b325e;
+  --color-gold-300: #ecdba9;
+  --color-gold-400: #ddc180;
+  --color-gold-500: #c9a15a;
+  --color-gold-600: #a97f3e;
+  --color-cream: #f6f3ec;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy-950: var(--color-navy-950);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-700: var(--color-navy-700);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+  --color-cream: var(--color-cream);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(90deg, var(--color-gold-600), var(--color-gold-400) 50%, var(--color-gold-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
