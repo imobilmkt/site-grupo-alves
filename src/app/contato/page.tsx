@@ -7,11 +7,10 @@ export const metadata: Metadata = {
   description: "Fale com a Grupo Alves Imóveis por telefone, WhatsApp ou mensagem.",
 };
 
-export default function ContatoPage() {
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    site.address.mapsQuery,
-  )}&output=embed`;
+const mapSrc =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.848849045736!2d-34.90424552459198!3d-8.11686828122629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab1f74c91b0267%3A0x6ce4e7662e0688e8!2sGrupo%20Alves%20Im%C3%B3veis!5e0!3m2!1spt-BR!2sbr!4v1792157161973!5m2!1spt-BR!2sbr";
 
+export default function ContatoPage() {
   return (
     <>
       <section className="bg-navy-950 py-16 text-center text-cream md:py-20">
@@ -52,7 +51,8 @@ export default function ContatoPage() {
               height="320"
               style={{ border: 0 }}
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         </div>
