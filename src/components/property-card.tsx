@@ -21,25 +21,40 @@ export function PropertyCard({ property }: { property: Property }) {
       </div>
       <div className="p-5">
         <p className="text-xs font-medium uppercase tracking-wide text-gold-600">
-          {property.type} · {property.neighborhood}
+          {property.type} · {property.location}
         </p>
         <h3 className="mt-1 font-serif-display text-lg text-navy-900">{property.title}</h3>
-        <p className="text-sm text-navy-700/70">{property.city}</p>
 
-        <div className="mt-4 flex items-center gap-4 text-sm text-navy-800/80">
-          {property.bedrooms > 0 && <span>{property.bedrooms} qts</span>}
-          <span>{property.bathrooms} ban.</span>
-          <span>{property.parking} vg.</span>
-          <span>{property.area} m²</span>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {property.stats.map((stat) => (
+            <span
+              key={stat}
+              className="rounded-full bg-cream px-3 py-1 text-xs font-medium text-navy-800/80"
+            >
+              {stat}
+            </span>
+          ))}
         </div>
 
         <div className="mt-4 flex items-center justify-between border-t border-black/5 pt-4">
-          <p className="font-serif-display text-xl text-navy-900">
-            {formatPrice(property.price, property.purpose)}
-          </p>
-          <span className="text-sm font-semibold text-gold-600 transition group-hover:text-gold-500">
-            Ver detalhes →
-          </span>
+          <div>
+            {property.priceLabel && (
+              <p className="text-xs font-medium uppercase tracking-wide text-navy-700/60">
+                {property.priceLabel}
+              </p>
+            )}
+            <p className="font-serif-display text-xl text-navy-900">
+              {formatPrice(property.price, property.purpose)}
+            </p>
+          </div>
+          <a
+            href={property.instagramUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm font-semibold text-gold-600 transition group-hover:text-gold-500"
+          >
+            Ver no Instagram →
+          </a>
         </div>
       </div>
     </article>
