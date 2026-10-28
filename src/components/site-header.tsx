@@ -4,39 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { navLinks, site } from "@/lib/site";
+import { navLinks, site, whatsappLink } from "@/lib/site";
+import { InstagramIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
 
-function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
-      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
-    </svg>
-  );
-}
-
-function FacebookIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
-      <path
-        d="M14 9h2V6h-2c-1.66 0-3 1.34-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V9.5c0-.28.22-.5.5-.5Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
-      <path
-        d="M6.6 10.8c1.3 2.6 3.4 4.7 6 6l2-2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.8c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1l-2 2.3Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
+const HEADER_WHATSAPP_MESSAGE =
+  "Olá! Vim pelo site da Grupo Alves Imóveis e gostaria de falar com um corretor.";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -44,41 +16,6 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 bg-navy-950/95 backdrop-blur text-cream shadow-lg shadow-black/20">
-      <div className="hidden border-b border-white/10 bg-navy-950 md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-sm">
-          <span className="text-gold-300/90">{site.creci}</span>
-          <div className="flex items-center gap-5">
-            <a
-              href={`tel:+${site.phoneWhatsapp}`}
-              className="flex items-center gap-2 text-cream/90 transition hover:text-gold-400"
-            >
-              <PhoneIcon />
-              {site.phoneDisplay}
-            </a>
-            <div className="flex items-center gap-3">
-              <a
-                href={site.social.instagram}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 text-cream/90 transition hover:border-gold-400 hover:text-gold-400"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href={site.social.facebook}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 text-cream/90 transition hover:border-gold-400 hover:text-gold-400"
-              >
-                <FacebookIcon />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -109,18 +46,38 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <a
+            href={whatsappLink(HEADER_WHATSAPP_MESSAGE)}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition hover:brightness-95"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            WhatsApp
+          </a>
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-md border border-white/20 text-cream md:hidden"
-          aria-label="Abrir menu"
-        >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href={whatsappLink(HEADER_WHATSAPP_MESSAGE)}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Falar no WhatsApp"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-white/20 text-cream"
+            aria-label="Abrir menu"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -141,6 +98,15 @@ export function SiteHeader() {
             <a href={`tel:+${site.phoneWhatsapp}`} className="flex items-center gap-2 text-sm text-gold-300">
               <PhoneIcon />
               {site.phoneDisplay}
+            </a>
+            <a
+              href={site.social.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-sm text-cream/90"
+            >
+              <InstagramIcon />
+              Instagram
             </a>
           </nav>
         </div>

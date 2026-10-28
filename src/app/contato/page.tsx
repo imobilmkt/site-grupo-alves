@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
+import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Contato | Grupo Alves Imóveis",
@@ -40,6 +41,27 @@ export default function ContatoPage() {
               className="inline-block pt-2 font-semibold text-gold-600 hover:text-gold-500"
             >
               {site.phoneDisplay}
+            </a>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href={whatsappLink("Olá! Vim pela página de contato do site da Grupo Alves Imóveis e gostaria de falar com um corretor.")}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              Falar no WhatsApp
+            </a>
+            <a
+              href={site.social.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-lg border border-navy-900 px-6 py-3 text-sm font-semibold text-navy-900 transition hover:bg-navy-900 hover:text-gold-400"
+            >
+              <InstagramIcon className="h-4 w-4" />
+              Ver Instagram
             </a>
           </div>
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { navLinks, site } from "@/lib/site";
+import { navLinks, site, whatsappLink } from "@/lib/site";
+import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/icons";
 
 export function SiteFooter() {
   return (
@@ -55,22 +56,35 @@ export function SiteFooter() {
             </li>
             <li>CNPJ: {site.cnpj}</li>
           </ul>
+
+          <a
+            href={whatsappLink("Olá! Vim pelo site da Grupo Alves Imóveis e gostaria de falar com um corretor.")}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 flex w-fit items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition hover:brightness-95"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Falar no WhatsApp
+          </a>
+
           <div className="mt-4 flex gap-3">
             <a
               href={site.social.instagram}
               target="_blank"
               rel="noreferrer"
-              className="text-sm underline-offset-4 hover:text-gold-400 hover:underline"
+              aria-label="Instagram"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition hover:border-gold-400 hover:text-gold-400"
             >
-              Instagram
+              <InstagramIcon className="h-4 w-4" />
             </a>
             <a
               href={site.social.facebook}
               target="_blank"
               rel="noreferrer"
-              className="text-sm underline-offset-4 hover:text-gold-400 hover:underline"
+              aria-label="Facebook"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition hover:border-gold-400 hover:text-gold-400"
             >
-              Facebook
+              <FacebookIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
