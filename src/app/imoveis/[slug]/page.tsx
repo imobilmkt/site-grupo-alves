@@ -103,20 +103,39 @@ export default async function PropertyPage({ params }: PageProps) {
     },
   };
 
+  const purposeLabel = property.purpose === "Aluguel" ? "Alugar" : "Comprar";
+  const purposeHref = property.purpose === "Aluguel" ? "/aluguel" : "/imoveis";
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Início", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: purposeLabel, item: `${siteUrl}${purposeHref}` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: property.title,
+        item: `${siteUrl}/imoveis/${property.id}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(propertyJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <nav className="mb-6 text-sm text-navy-800/60">
-          <Link
-            href={property.purpose === "Aluguel" ? "/aluguel" : "/imoveis"}
-            className="hover:text-gold-600"
-          >
-            {property.purpose === "Aluguel" ? "Alugar" : "Comprar"}
+          <Link href={purposeHref} className="hover:text-gold-600">
+            {purposeLabel}
           </Link>
           <span className="mx-2">/</span>
           <span className="text-navy-900">{property.title}</span>

@@ -4,8 +4,11 @@ import { formatPrice, properties } from "@/data/properties";
 import { site, siteUrl, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import { WhatsAppButton } from "@/components/whatsapp-button";
+import { FaqSection } from "@/components/faq-section";
+import { buildPropertyFaqs } from "@/lib/faq";
 
 const forSale = properties.filter((p) => p.purpose === "Venda");
+const saleFaqs = buildPropertyFaqs(forSale, "Venda");
 const prices = forSale.map((p) => p.price);
 const minPrice = Math.min(...prices);
 const maxPrice = Math.max(...prices);
@@ -59,6 +62,8 @@ export default function ImoveisPage() {
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
         <PropertyFilters properties={forSale} showPurposeFilter={false} />
       </section>
+
+      <FaqSection title="Perguntas frequentes sobre imóveis à venda" faqs={saleFaqs} />
 
       <section className="bg-navy-950 py-16 text-center text-cream">
         <div className="mx-auto max-w-2xl px-6">

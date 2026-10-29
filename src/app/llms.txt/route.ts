@@ -1,5 +1,6 @@
 import { formatPrice, properties } from "@/data/properties";
 import { site, siteUrl } from "@/lib/site";
+import { buildPropertyFaqs } from "@/lib/faq";
 
 // Arquivo seguindo a convenção llms.txt (https://llmstxt.org): um resumo em
 // Markdown, pensado para ser lido por assistentes de IA, com os dados centrais
@@ -46,6 +47,18 @@ function buildLlmsTxt() {
   }
 
   lines.push("");
+  lines.push("## Perguntas frequentes");
+  lines.push("");
+
+  const forSale = properties.filter((p) => p.purpose === "Venda");
+  const forRent = properties.filter((p) => p.purpose === "Aluguel");
+
+  for (const faq of [...buildPropertyFaqs(forSale, "Venda"), ...buildPropertyFaqs(forRent, "Aluguel")]) {
+    lines.push(`**${faq.question}**`);
+    lines.push(faq.answer);
+    lines.push("");
+  }
+
   lines.push("## Outras páginas");
   lines.push("");
   lines.push(`- [Imóveis à venda](${siteUrl}/imoveis)`);

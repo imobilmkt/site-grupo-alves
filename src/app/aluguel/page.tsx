@@ -4,8 +4,11 @@ import { formatPrice, properties } from "@/data/properties";
 import { site, siteUrl, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import { WhatsAppButton } from "@/components/whatsapp-button";
+import { FaqSection } from "@/components/faq-section";
+import { buildPropertyFaqs } from "@/lib/faq";
 
 const forRent = properties.filter((p) => p.purpose === "Aluguel");
+const rentFaqs = buildPropertyFaqs(forRent, "Aluguel");
 const prices = forRent.map((p) => p.price);
 const minPrice = Math.min(...prices);
 const maxPrice = Math.max(...prices);
@@ -59,6 +62,8 @@ export default function AluguelPage() {
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
         <PropertyFilters properties={forRent} showPurposeFilter={false} />
       </section>
+
+      <FaqSection title="Perguntas frequentes sobre imóveis para alugar" faqs={rentFaqs} />
 
       <section className="bg-navy-950 py-16 text-center text-cream">
         <div className="mx-auto max-w-2xl px-6">
