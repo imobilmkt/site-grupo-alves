@@ -31,7 +31,8 @@ export function instagramLink(url?: string) {
 
 export const navLinks = [
   { href: "/", label: "Início" },
-  { href: "/imoveis", label: "Imóveis" },
+  { href: "/imoveis", label: "Comprar" },
+  { href: "/aluguel", label: "Alugar" },
   { href: "/sobre", label: "Sobre" },
   { href: "/contato", label: "Contato" },
   { href: "/financie", label: "Financie" },

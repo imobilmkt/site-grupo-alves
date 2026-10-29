@@ -4,22 +4,19 @@ import { formatPrice, properties } from "@/data/properties";
 import { site, siteUrl, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 
-const prices = properties.map((p) => p.price);
+const forSale = properties.filter((p) => p.purpose === "Venda");
+const prices = forSale.map((p) => p.price);
 const minPrice = Math.min(...prices);
 const maxPrice = Math.max(...prices);
-const neighborhoods = Array.from(new Set(properties.map((p) => p.neighborhood).filter(Boolean)));
-const types = Array.from(new Set(properties.map((p) => p.type.toLowerCase())));
-const purposes = Array.from(new Set(properties.map((p) => p.purpose.toLowerCase())));
+const neighborhoods = Array.from(new Set(forSale.map((p) => p.neighborhood).filter(Boolean)));
+const types = Array.from(new Set(forSale.map((p) => p.type.toLowerCase())));
 
-const description = `Confira ${properties.length} imóveis disponíveis da Grupo Alves Imóveis em ${
+const description = `Confira ${forSale.length} imóveis à venda da Grupo Alves Imóveis em ${
   neighborhoods.join(", ") || "Recife e região"
-}: ${types.join(", ")} para ${purposes.join(" e ")}, de ${formatPrice(minPrice, "Venda").replace(
-  "/mês",
-  ""
-)} a ${formatPrice(maxPrice, "Venda").replace("/mês", "")}.`;
+}: ${types.join(", ")}, de ${formatPrice(minPrice, "Venda")} a ${formatPrice(maxPrice, "Venda")}.`;
 
 export const metadata: Metadata = {
-  title: "Imóveis à venda e para alugar",
+  title: "Imóveis à venda",
   description,
   alternates: { canonical: "/imoveis" },
 };
@@ -27,7 +24,7 @@ export const metadata: Metadata = {
 const listJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  itemListElement: properties.map((property, index) => ({
+  itemListElement: forSale.map((property, index) => ({
     "@type": "ListItem",
     position: index + 1,
     url: `${siteUrl}/imoveis/${property.id}`,
@@ -49,17 +46,17 @@ export default function ImoveisPage() {
             Grupo Alves Imóveis
           </p>
           <h1 className="font-serif-display text-3xl md:text-5xl">
-            Nossos <span className="gold-gradient-text">imóveis</span>
+            Imóveis à <span className="gold-gradient-text">venda</span>
           </h1>
           <p className="mt-5 text-cream/70">
-            Casas, apartamentos e terrenos à venda e para aluguel em Recife e região, com
-            assessoria completa em cada etapa do negócio.
+            Casas, apartamentos e terrenos à venda em Recife e região, com assessoria completa em
+            cada etapa do negócio.
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <PropertyFilters properties={properties} />
+        <PropertyFilters properties={forSale} showPurposeFilter={false} />
       </section>
 
       <section className="bg-navy-950 py-16 text-center text-cream">

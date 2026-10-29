@@ -111,8 +111,11 @@ export default async function PropertyPage({ params }: PageProps) {
 
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <nav className="mb-6 text-sm text-navy-800/60">
-          <Link href="/imoveis" className="hover:text-gold-600">
-            Imóveis
+          <Link
+            href={property.purpose === "Aluguel" ? "/aluguel" : "/imoveis"}
+            className="hover:text-gold-600"
+          >
+            {property.purpose === "Aluguel" ? "Alugar" : "Comprar"}
           </Link>
           <span className="mx-2">/</span>
           <span className="text-navy-900">{property.title}</span>

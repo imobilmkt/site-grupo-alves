@@ -48,7 +48,8 @@ function buildLlmsTxt() {
   lines.push("");
   lines.push("## Outras páginas");
   lines.push("");
-  lines.push(`- [Todos os imóveis](${siteUrl}/imoveis)`);
+  lines.push(`- [Imóveis à venda](${siteUrl}/imoveis)`);
+  lines.push(`- [Imóveis para alugar](${siteUrl}/aluguel)`);
   lines.push(`- [Sobre a Grupo Alves Imóveis](${siteUrl}/sobre)`);
   lines.push(`- [Financiamento](${siteUrl}/financie)`);
   lines.push(`- [Negociar/anunciar um imóvel](${siteUrl}/negocie)`);
