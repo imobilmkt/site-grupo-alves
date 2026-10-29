@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks, site, whatsappLink } from "@/lib/site";
 import { InstagramIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 const HEADER_WHATSAPP_MESSAGE =
   "Olá! Vim pelo site da Grupo Alves Imóveis e gostaria de falar com um corretor.";
@@ -46,27 +47,23 @@ export function SiteHeader() {
               </Link>
             );
           })}
-          <a
+          <WhatsAppButton
             href={whatsappLink(HEADER_WHATSAPP_MESSAGE)}
-            target="_blank"
-            rel="noreferrer"
             className="flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition hover:brightness-95"
           >
             <WhatsAppIcon className="h-4 w-4" />
             WhatsApp
-          </a>
+          </WhatsAppButton>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
-          <a
+          <WhatsAppButton
             href={whatsappLink(HEADER_WHATSAPP_MESSAGE)}
-            target="_blank"
-            rel="noreferrer"
             aria-label="Falar no WhatsApp"
             className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white"
           >
             <WhatsAppIcon className="h-5 w-5" />
-          </a>
+          </WhatsAppButton>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

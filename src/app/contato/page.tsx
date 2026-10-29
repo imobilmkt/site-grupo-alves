@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { site, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = {
   title: "Contato | Grupo Alves Imóveis",
@@ -45,15 +46,13 @@ export default function ContatoPage() {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <a
+            <WhatsAppButton
               href={whatsappLink("Olá! Vim pela página de contato do site da Grupo Alves Imóveis e gostaria de falar com um corretor.")}
-              target="_blank"
-              rel="noreferrer"
               className="flex items-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Falar no WhatsApp
-            </a>
+            </WhatsAppButton>
             <a
               href={site.social.instagram}
               target="_blank"

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { formatPrice, properties } from "@/data/properties";
 import { site, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 const HOME_WHATSAPP_MESSAGE =
   "Olá! Vim pelo site da Grupo Alves Imóveis e gostaria de falar com um corretor.";
@@ -37,15 +38,13 @@ export default function Home() {
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a
+              <WhatsAppButton
                 href={whatsappLink(HOME_WHATSAPP_MESSAGE)}
-                target="_blank"
-                rel="noreferrer"
                 className="flex items-center gap-2 rounded-lg bg-[#25D366] px-7 py-3 text-sm font-semibold text-white transition hover:brightness-95"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 Falar no WhatsApp
-              </a>
+              </WhatsAppButton>
               <Link
                 href="/imoveis"
                 className="flex items-center gap-2 rounded-lg border border-cream/30 px-7 py-3 text-sm font-semibold text-cream transition hover:border-gold-400 hover:text-gold-400"
@@ -233,15 +232,13 @@ export default function Home() {
             Estamos prontos para ajudá-lo a realizar o sonho de adquirir a casa própria.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
-            <a
+            <WhatsAppButton
               href={whatsappLink(HOME_WHATSAPP_MESSAGE)}
-              target="_blank"
-              rel="noreferrer"
               className="flex items-center gap-2 rounded-lg bg-[#25D366] px-8 py-3 text-sm font-semibold text-white transition hover:brightness-95"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Falar no WhatsApp
-            </a>
+            </WhatsAppButton>
             <a
               href={site.social.instagram}
               target="_blank"

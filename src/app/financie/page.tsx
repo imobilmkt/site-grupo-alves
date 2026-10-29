@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = {
   title: "Financie | Grupo Alves Imóveis",
@@ -30,15 +31,13 @@ export default function FinanciePage() {
             Fale com um de nossos corretores pelo WhatsApp e simule as melhores condições de
             financiamento com acompanhamento em cada etapa do processo.
           </p>
-          <a
+          <WhatsAppButton
             href={whatsappLink("Olá! Gostaria de simular o financiamento de um imóvel com a Grupo Alves Imóveis.")}
-            target="_blank"
-            rel="noreferrer"
             className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-8 py-3 text-sm font-semibold text-white transition hover:brightness-95"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Falar no WhatsApp
-          </a>
+          </WhatsAppButton>
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { site, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = {
   title: "Sobre nós | Grupo Alves Imóveis",
@@ -137,15 +138,13 @@ export default function SobrePage() {
           própria.
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-          <a
+          <WhatsAppButton
             href={whatsappLink("Olá! Vi a página Sobre nós do site e gostaria de conversar com a Grupo Alves Imóveis.")}
-            target="_blank"
-            rel="noreferrer"
             className="flex items-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Falar no WhatsApp
-          </a>
+          </WhatsAppButton>
           <a
             href={site.social.instagram}
             target="_blank"

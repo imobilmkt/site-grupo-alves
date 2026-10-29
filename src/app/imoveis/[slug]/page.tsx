@@ -6,6 +6,7 @@ import { PropertyCard } from "@/components/property-card";
 import { formatPrice, getPropertyById, getPropertySummary, properties } from "@/data/properties";
 import { instagramLink, site, siteUrl, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export function generateStaticParams() {
   return properties.map((property) => ({ slug: property.id }));
@@ -183,15 +184,13 @@ export default async function PropertyPage({ params }: PageProps) {
               )}
             </div>
 
-            <a
+            <WhatsAppButton
               href={whatsappLink(waMessage)}
-              target="_blank"
-              rel="noreferrer"
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Falar no WhatsApp
-            </a>
+            </WhatsAppButton>
 
             <a
               href={instagramLink(property.instagramUrl)}

@@ -3,6 +3,7 @@ import { PropertyFilters } from "@/components/property-filters";
 import { formatPrice, properties } from "@/data/properties";
 import { site, siteUrl, whatsappLink } from "@/lib/site";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 const forSale = properties.filter((p) => p.purpose === "Venda");
 const prices = forSale.map((p) => p.price);
@@ -69,15 +70,13 @@ export default function ImoveisPage() {
             imóvel ideal.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-            <a
+            <WhatsAppButton
               href={whatsappLink("Olá! Vim pela página de imóveis do site da Grupo Alves Imóveis e gostaria de ajuda para encontrar um imóvel.")}
-              target="_blank"
-              rel="noreferrer"
               className="flex items-center gap-2 rounded-lg bg-[#25D366] px-8 py-3 text-sm font-semibold text-white transition hover:brightness-95"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Falar no WhatsApp
-            </a>
+            </WhatsAppButton>
             <a
               href={site.social.instagram}
               target="_blank"

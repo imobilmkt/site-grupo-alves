@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { navLinks, site, whatsappLink } from "@/lib/site";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export function SiteFooter() {
   return (
@@ -57,15 +58,13 @@ export function SiteFooter() {
             <li>CNPJ: {site.cnpj}</li>
           </ul>
 
-          <a
+          <WhatsAppButton
             href={whatsappLink("Olá! Vim pelo site da Grupo Alves Imóveis e gostaria de falar com um corretor.")}
-            target="_blank"
-            rel="noreferrer"
             className="mt-4 flex w-fit items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition hover:brightness-95"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Falar no WhatsApp
-          </a>
+          </WhatsAppButton>
 
           <div className="mt-4 flex gap-3">
             <a

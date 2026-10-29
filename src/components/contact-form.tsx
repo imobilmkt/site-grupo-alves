@@ -19,6 +19,9 @@ export function ContactForm() {
       "",
       message,
     ].filter(Boolean);
+    if (typeof window.gtag_report_conversion === "function") {
+      window.gtag_report_conversion();
+    }
     window.open(whatsappLink(lines.join("\n")), "_blank", "noreferrer");
     setSent(true);
   }
